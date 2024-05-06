@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path
 from rest_framework.authtoken import views
 
-from auth import views as auth_views
+from authsystem import views as auth_views
 
 
 urlpatterns = [
