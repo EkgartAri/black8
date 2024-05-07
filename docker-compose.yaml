@@ -1,0 +1,42 @@
+version: '3.9'
+
+volumes:
+  black8-db-volume:
+    name: black8-db-volume
+
+networks:
+  black8-network:
+    name: black8-network
+
+services:
+  black8:
+    container_name: black8
+    image: black8
+    build: .
+    env_file:
+      - .env
+    ports:
+      - ${PORT}:8000
+    restart: unless-stopped
+    depends_on:
+      - db
+    networks:
+      - black8-network
+
+  db:
+    container_name: black8_db
+    image: postgres:16.0-alpine
+    environment:
+      POSTGRES_DB: ${DATABASE_NAME}
+      POSTGRES_USER: ${DATABASE_USER}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+    restart: unless-stopped
+    healthcheck:
+      test: pg_isready --username=${DATABASE_USER} --dbname=${DATABASE_NAME}
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    volumes:
+      - black8-db-volume:/var/lib/postgresql/data
+    networks:
+      - black8-network
