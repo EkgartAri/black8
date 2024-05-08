@@ -16,7 +16,6 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
-from rest_framework.authtoken import views
 from rest_framework import routers
 
 from authsystem import views as auth_views
@@ -31,6 +30,6 @@ router.register(r'photos', appartments_views.PhotoViewSet)
 urlpatterns = [
     path('api/', include(router.urls)),
     path('admin/', admin.site.urls),
-    path('get_token/', views.obtain_auth_token),
+    path('login/', auth_views.Login.as_view()),
     path('register/', auth_views.register),
 ]
