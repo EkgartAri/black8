@@ -4,8 +4,15 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 
 import RegisterPage from './RegisterPage'
 import LoginPage from './LoginPage'
+import HomePage from './HomePage'
+import AppartmentPage from './AppartmentPage'
+import WishlistPage from './WishlistPage'
 
 const router = createBrowserRouter([
+  {
+    path: '',
+    element: <HomePage />,
+  },
   {
     path: 'register',
     element: <RegisterPage />,
@@ -14,6 +21,11 @@ const router = createBrowserRouter([
     path: 'login',
     element: <LoginPage />,
   },
+  {
+    path: 'appartments/:id',
+    element: <AppartmentPage />,
+  },
+  { path: 'wishlist', element: <WishlistPage /> },
 ])
 
 const root = ReactDOM.createRoot(document.getElementById('root'))

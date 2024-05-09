@@ -3,3 +3,6 @@ startapp:
 
 stopapp:
 	docker compose down
+
+runfront:
+	cd frontend && npm run start || cd -

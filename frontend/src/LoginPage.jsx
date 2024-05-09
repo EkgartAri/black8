@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { API_BASEURL } from './constants'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const LoginPage = () => {
   const navigate = useNavigate()
@@ -32,6 +32,9 @@ const LoginPage = () => {
       <input name="email" label="email" type="email" />
       <input name="password" label="password" type="password" />
       <button type="submit">Login</button>
+      <Link to="/register">
+        Еще нет аккаунта? Ну и лох! Регайся скорей, не будь редиской
+      </Link>
     </form>
   )
 }

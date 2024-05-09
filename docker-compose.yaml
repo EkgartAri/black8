@@ -3,6 +3,8 @@ version: '3.9'
 volumes:
   black8-db-volume:
     name: black8-db-volume
+  black8-photos:
+    name: black8-photos
 
 networks:
   black8-network:
@@ -23,6 +25,8 @@ services:
     networks:
       - black8-network
     tty: true
+    volumes:
+      - black8-photos:/app/photos
 
   db:
     container_name: black8_db
