@@ -12,16 +12,20 @@ if TYPE_CHECKING:
 
 @api_view(['POST'])
 def register(request: "Request"):
+    # извлекаем креды из тела запроса
     email = request.data.get("email")
     password = request.data.get("password")
 
+    # извлекаем username из электронной почты
     username = extract_username_from_email(email)
+    # cоздаем пользователя
     User.objects.create(
         email=email,
         username=username,
         password=password,
     )
 
+    # возвращаем сообщение о создании пользователя
     return Response({"message": "created user"})
 
 
@@ -31,9 +35,13 @@ class Login(ObtainAuthToken):
     """
     
     def post(self, request: "Request", *args, **kwargs):
+        # извлекаем электронную почту из тела запроса
         email = request.data.pop("email")
+        # получаем пользователя из бд
         user = User.objects.get(email=email)
+        # создаем или получаем токен из бд
         token, _ = Token.objects.get_or_create(user=user)
+        # возвращаем токен в ответе
         return Response({'token': token.key})
 
 
