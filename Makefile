@@ -5,4 +5,4 @@ stopapp:
 	docker compose down
 
 runfront:
-	cd frontend && npm run start || cd -
+	cd frontend && npm i && npm run start || cd -
