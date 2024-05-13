@@ -1,10 +1,10 @@
-# black8
+# Black8
 
 Агрегатор недвижимости
 
-## How to run project?
+## Как запустить?
 
-#### Dependencies:
+#### Зависимости:
 
 - make
 - Docker
