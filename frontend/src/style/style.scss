@@ -1,0 +1,16 @@
+.home_search {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 60px;
+  &--input {
+    width: 130px;
+    margin: 5px !important;
+  }
+  &--search-filed {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 15px;
+  }
+}

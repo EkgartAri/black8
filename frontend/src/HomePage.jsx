@@ -3,6 +3,7 @@ import { API_BASEURL } from './constants'
 import { Link } from 'react-router-dom'
 import Appartment from './Appartment'
 import {Button, TextField} from "@mui/material";
+import style from './style/style.scss';
 
 const debounce = (callback, wait) => {
   let timeoutId = null
@@ -53,53 +54,63 @@ const HomePage = () => {
   }
 
   return (
-    <>
-      <Link to="/wishlist">Избранное</Link>
       <div>
-        <TextField onChange={onSearchChange} label="Поисковый запрос" variant='standard'/>
-        <TextField
-          onChange={(e) => setAreaFrom(e.target.value)}
-          label="Площадь от"
-          variant="outlined"
-        />
-        <TextField
-          onChange={(e) => setAreaTo(e.target.value)}
-          label="Площадь до"
-          variant="outlined"
-        />
-        <TextField
-          onChange={(e) => setPriceFrom(e.target.value)}
-          label="Цена от"
-          variant="outlined"
-        />
-        <TextField
-          onChange={(e) => setPriceTo(e.target.value)}
-          label="Цена до"
-          variant="outlined"
-        />
-        <Button onClick={search}>Search</Button>
-      </div>
+        <Link to="/wishlist"><img/>icon</Link>
+        <div className={'home_search'}>
+          <TextField
+              onChange={(e) => setAreaFrom(e.target.value)}
+              label="Площадь от"
+              variant="outlined"
+              size="small"
+              color="secondary"
+              className={'home_search--input'}
+          />
+          <TextField
+              onChange={(e) => setAreaTo(e.target.value)}
+              label="Площадь до"
+              variant="outlined"
+              size="small"
+              className={'home_search--input'}
+          />
+          <TextField
+              onChange={(e) => setPriceFrom(e.target.value)}
+              label="Цена от"
+              variant="outlined"
+              size="small"
+              className={'home_search--input'}
+          />
+          <TextField
+              onChange={(e) => setPriceTo(e.target.value)}
+              label="Цена до"
+              variant="outlined"
+              size="small"
+              className={'home_search--input'}
+          />
+        </div>
+        <div className={'home_search--search-filed'}>
+          <TextField onChange={onSearchChange} label="Поисковый запрос" variant='standard'/>
+          <Button onClick={search}>Search</Button>
+        </div>
+        <div>
+          <h2>Квартиры</h2>
 
-      <div>
-        <h2>Квартиры</h2>
-
-        <ul>
-          {appartments.map((appartment) => (
-            <li>
-              <Appartment
-                id={appartment.id}
-                number={appartment.number}
-                photos={appartment.photos}
-                address={appartment.address}
-                description={appartment.address}
-                area={appartment.area}
-                price={appartment.price}
-              />
-            </li>
-          ))}
-        </ul>
+          <ul>
+            {appartments.map((appartment) => (
+                <li>
+                  <Appartment
+                      id={appartment.id}
+                      number={appartment.number}
+                      photos={appartment.photos}
+                      address={appartment.address}
+                      description={appartment.address}
+                      area={appartment.area}
+                      price={appartment.price}
+                  />
+                </li>
+            ))}
+          </ul>
+        </div>
       </div>
-    </>
   )
 }
 
