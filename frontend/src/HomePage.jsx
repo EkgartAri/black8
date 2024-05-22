@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { API_BASEURL } from './constants'
 import { Link } from 'react-router-dom'
 import Appartment from './Appartment'
+import {Button, TextField} from "@mui/material";
 
 const debounce = (callback, wait) => {
   let timeoutId = null
@@ -55,24 +56,28 @@ const HomePage = () => {
     <>
       <Link to="/wishlist">Избранное</Link>
       <div>
-        <input onChange={onSearchChange} placeholder="Поисковый запрос" />
-        <input
+        <TextField onChange={onSearchChange} label="Поисковый запрос" variant='standard'/>
+        <TextField
           onChange={(e) => setAreaFrom(e.target.value)}
-          placeholder="Площадь от"
+          label="Площадь от"
+          variant="outlined"
         />
-        <input
+        <TextField
           onChange={(e) => setAreaTo(e.target.value)}
-          placeholder="Площадь до"
+          label="Площадь до"
+          variant="outlined"
         />
-        <input
+        <TextField
           onChange={(e) => setPriceFrom(e.target.value)}
-          placeholder="Цена от"
+          label="Цена от"
+          variant="outlined"
         />
-        <input
+        <TextField
           onChange={(e) => setPriceTo(e.target.value)}
-          placeholder="Цена до"
+          label="Цена до"
+          variant="outlined"
         />
-        <button onClick={search}>Search</button>
+        <Button onClick={search}>Search</Button>
       </div>
 
       <div>
