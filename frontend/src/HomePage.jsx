@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import Appartment from './Appartment'
 import {Button, TextField} from "@mui/material";
 import style from './style/style.scss';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
 const debounce = (callback, wait) => {
   let timeoutId = null
@@ -55,7 +56,7 @@ const HomePage = () => {
 
   return (
       <div>
-        <Link to="/wishlist"><img/>icon</Link>
+        <Link className={'home_search--wishlist'} to="/wishlist"><FavoriteBorderIcon/></Link>
         <div className={'home_search'}>
           <TextField
               onChange={(e) => setAreaFrom(e.target.value)}
@@ -70,6 +71,7 @@ const HomePage = () => {
               label="Площадь до"
               variant="outlined"
               size="small"
+              color="secondary"
               className={'home_search--input'}
           />
           <TextField
@@ -77,6 +79,7 @@ const HomePage = () => {
               label="Цена от"
               variant="outlined"
               size="small"
+              color="secondary"
               className={'home_search--input'}
           />
           <TextField
@@ -84,19 +87,29 @@ const HomePage = () => {
               label="Цена до"
               variant="outlined"
               size="small"
+              color="secondary"
               className={'home_search--input'}
           />
         </div>
         <div className={'home_search--search-filed'}>
-          <TextField onChange={onSearchChange} label="Поисковый запрос" variant='standard'/>
-          <Button onClick={search}>Search</Button>
+          <TextField
+              className={'home_search--search-filed__input'}
+              onChange={onSearchChange}
+              label="Поисковый запрос"
+              variant='standard'
+              color="secondary"
+          />
+          <Button
+              className={'home_search--search-filed__btn'}
+              variant="contained"
+              color="secondary"
+              onClick={search}
+          >Search
+          </Button>
         </div>
-        <div>
-          <h2>Квартиры</h2>
-
-          <ul>
+        <div className={'home_search--offers'}>
+          <h2 className={'home_search--offers__title'}>Самые выгодные предложения</h2>
             {appartments.map((appartment) => (
-                <li>
                   <Appartment
                       id={appartment.id}
                       number={appartment.number}
@@ -106,9 +119,7 @@ const HomePage = () => {
                       area={appartment.area}
                       price={appartment.price}
                   />
-                </li>
             ))}
-          </ul>
         </div>
       </div>
   )

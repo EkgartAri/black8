@@ -32,9 +32,11 @@ const LoginPage = () => {
       <input name="email" label="email" type="email" />
       <input name="password" label="password" type="password" />
       <button type="submit">Login</button>
-      <Link to="/register">
-        Еще нет аккаунта? Ну и лох! Регайся скорей, не будь редиской
-      </Link>
+      <h2>
+        <Link to="/register">
+          Чтобы добавлять апратаменты в избранное - нужно зарегестрироваться
+        </Link>
+      </h2>
     </form>
   )
 }
