@@ -28,25 +28,27 @@ class AppartmentViewSet(viewsets.ModelViewSet):
         price_from = request.query_params.get("price_from")
         price_to = request.query_params.get("price_to")
 
+        queryset = Appartment.objects.all()
+
         # добавляем фильтр поискового запроса
         if q:
-            self.queryset = self.queryset.filter(Q(address__icontains=q) | Q(description__icontains=q))
+            queryset = queryset.filter(Q(address__icontains=q) | Q(description__icontains=q))
 
         # добавляем фильтр ограничения площади
         if area_from is not None:
             # area__gte - area greater than or equal (площадь больше чем или равна)
-            self.queryset = self.queryset.filter(area__gte=float(area_from))
+            queryset = queryset.filter(area__gte=float(area_from))
         if area_to is not None:
             # area__lte - area lesser than or equal (площадь меньше чем или равна)
-            self.queryset = self.queryset.filter(area__lte=float(area_to))
+            queryset = queryset.filter(area__lte=float(area_to))
         # те же фильтры, только для ограничения цены
         if price_from is not None:
-            self.queryset = self.queryset.filter(price__gte=int(price_from))
+            queryset = queryset.filter(price__gte=int(price_from))
         if price_to is not None:
-            self.queryset = self.queryset.filter(price__lte=int(price_to))
+            queryset = queryset.filter(price__lte=int(price_to))
 
         # собираем кверисет в сериализатор и в ответ
-        serializer = self.get_serializer(self.queryset, many=True)
+        serializer = self.get_serializer(queryset, many=True)
         return Response(serializer.data)
 
     @action(detail=False, methods=["post", "get"])
