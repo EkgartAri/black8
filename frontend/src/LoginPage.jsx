@@ -2,6 +2,7 @@ import React from 'react'
 
 import { API_BASEURL } from './constants'
 import { Link, useNavigate } from 'react-router-dom'
+import style from './style/style.scss';
 
 const LoginPage = () => {
   const navigate = useNavigate()
@@ -28,13 +29,13 @@ const LoginPage = () => {
   }
 
   return (
-    <form onSubmit={login}>
-      <input name="email" label="email" type="email" />
-      <input name="password" label="password" type="password" />
-      <button type="submit">Login</button>
+    <form className={'registration-form'} onSubmit={login}>
+      <input className={'registration-form__input'} name="email" label="email" type="email" />
+      <input className={'registration-form__input'}  name="password" label="password" type="password" />
+      <button className={'registration-form__input'}  type="submit">Войти</button>
       <h2>
-        <Link to="/register">
-          Чтобы добавлять апратаменты в избранное - нужно зарегестрироваться
+        <Link className={'registration-form__link'} to="/register">
+          Еще не зарегестрированы?
         </Link>
       </h2>
     </form>

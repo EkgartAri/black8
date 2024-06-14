@@ -46,7 +46,7 @@ const AppartmentPage = () => {
             area={appartment.area}
             price={appartment.price}
           />
-          <button onClick={addToFavorites}>ДОбавить ва избраное</button>
+          <button onClick={addToFavorites}>Добавить в избранное</button>
         </>
       )}
     </>

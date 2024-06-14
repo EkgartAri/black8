@@ -56,7 +56,12 @@ const HomePage = () => {
 
   return (
       <div>
+        <div className={'home_search__wrap'}>
+          <div className={'home_search__wrap--mark'}>РЕД 8</div>
+          <h1 className={'home_search__wrap--title'}>Поиск выгодных объявлений</h1>
+        </div>
         <Link className={'home_search--wishlist'} to="/wishlist"><FavoriteBorderIcon/></Link>
+        <h1 className={'home_search--title'}>Найди свою идеальную квартиру</h1>
         <div className={'home_search'}>
           <TextField
               onChange={(e) => setAreaFrom(e.target.value)}
@@ -108,18 +113,18 @@ const HomePage = () => {
           </Button>
         </div>
         <div className={'home_search--offers'}>
-          <h2 className={'home_search--offers__title'}>Самые выгодные предложения</h2>
-            {appartments.map((appartment) => (
-                  <Appartment
-                      id={appartment.id}
-                      number={appartment.number}
-                      photos={appartment.photos}
-                      address={appartment.address}
-                      description={appartment.address}
-                      area={appartment.area}
-                      price={appartment.price}
-                  />
-            ))}
+          <h2 className={'home_search--offers__title'}>Квартиры</h2>
+          {appartments.map((appartment) => (
+              <Appartment
+                  id={appartment.id}
+                  number={appartment.number}
+                  photos={appartment.photos}
+                  address={appartment.address}
+                  description={appartment.address}
+                  area={appartment.area}
+                  price={appartment.price}
+              />
+          ))}
         </div>
       </div>
   )
