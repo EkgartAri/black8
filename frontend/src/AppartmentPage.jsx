@@ -3,6 +3,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 
 import { API_BASEURL } from './constants'
 import Appartment from './Appartment'
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 
 const AppartmentPage = () => {
   const { id } = useParams()
@@ -33,23 +34,23 @@ const AppartmentPage = () => {
   }
 
   return (
-    <>
-      <Link to="/">Главная страница</Link>
-      {appartment && (
-        <>
-          <Appartment
-            id={appartment.id}
-            number={appartment.number}
-            photos={appartment.photos}
-            address={appartment.address}
-            description={appartment.address}
-            area={appartment.area}
-            price={appartment.price}
-          />
-          <button onClick={addToFavorites}>Добавить в избранное</button>
-        </>
-      )}
-    </>
+      <>
+        <Link className={'registration-form__link'} to="/">Главная страница</Link>
+        <button className={'registration-form__btn'} onClick={addToFavorites}>Добавить в избранное</button>
+        {appartment && (
+            <>
+              <Appartment
+                  id={appartment.id}
+                  number={appartment.number}
+                  photos={appartment.photos}
+                  address={appartment.address}
+                  description={appartment.description}
+                  area={appartment.area}
+                  price={appartment.price}
+              />
+            </>
+        )}
+      </>
   )
 }
 

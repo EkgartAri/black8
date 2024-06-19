@@ -39,7 +39,7 @@ const WishlistPage = () => {
               number={appartment.number}
               photos={appartment.photos}
               address={appartment.address}
-              description={appartment.address}
+              description={appartment.description}
               area={appartment.area}
               price={appartment.price}
             />

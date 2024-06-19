@@ -29,16 +29,24 @@ const LoginPage = () => {
   }
 
   return (
-    <form className={'registration-form'} onSubmit={login}>
-      <input className={'registration-form__input'} name="email" label="email" type="email" />
-      <input className={'registration-form__input'}  name="password" label="password" type="password" />
-      <button className={'registration-form__input'}  type="submit">Войти</button>
-      <h2>
-        <Link className={'registration-form__link'} to="/register">
-          Еще не зарегестрированы?
-        </Link>
-      </h2>
-    </form>
+    <div>
+      <Link className={'registration-form__link'} to="/">
+        На главную
+      </Link>
+      <form className={'registration-form'} onSubmit={login}>
+        <input className={'registration-form__input'} name="email" label="email" type="email" placeholder={"Введите email"} />
+        <input className={'registration-form__input'}  name="password" label="password" placeholder={"Введите пароль"} type="password" />
+        <button className={'registration-form__input'}  type="submit">Войти</button>
+        <h2>
+          <Link className={'registration-form__link'} to="/register">
+            Еще не зарегистрированы?
+          </Link>
+        </h2>
+      </form>
+      <div className={'registration-form--wrap'}>
+        <h1 className={'registration-form--wrap__title'}>Уютное место для отдыха</h1>
+      </div>
+    </div>
   )
 }
 

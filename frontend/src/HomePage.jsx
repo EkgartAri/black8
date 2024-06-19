@@ -57,18 +57,18 @@ const HomePage = () => {
   return (
       <div>
         <div className={'home_search__wrap'}>
-          <div className={'home_search__wrap--mark'}>РЕД 8</div>
-          <h1 className={'home_search__wrap--title'}>Поиск выгодных объявлений</h1>
+          <div className={'home_search__wrap--mark'}>Выгодно<br/>тут</div>
+          <h1 className={'home_search__wrap--title'}>Хвалынск - город курорт</h1>
         </div>
         <Link className={'home_search--wishlist'} to="/wishlist"><FavoriteBorderIcon/></Link>
-        <h1 className={'home_search--title'}>Найди свою идеальную квартиру</h1>
+        <h1 className={'home_search--title'}>Размещение по выгодным ценам</h1>
         <div className={'home_search'}>
           <TextField
               onChange={(e) => setAreaFrom(e.target.value)}
               label="Площадь от"
               variant="outlined"
               size="small"
-              color="secondary"
+              color="error"
               className={'home_search--input'}
           />
           <TextField
@@ -76,7 +76,7 @@ const HomePage = () => {
               label="Площадь до"
               variant="outlined"
               size="small"
-              color="secondary"
+              color="error"
               className={'home_search--input'}
           />
           <TextField
@@ -84,7 +84,7 @@ const HomePage = () => {
               label="Цена от"
               variant="outlined"
               size="small"
-              color="secondary"
+              color="error"
               className={'home_search--input'}
           />
           <TextField
@@ -92,7 +92,7 @@ const HomePage = () => {
               label="Цена до"
               variant="outlined"
               size="small"
-              color="secondary"
+              color="error"
               className={'home_search--input'}
           />
         </div>
@@ -102,25 +102,25 @@ const HomePage = () => {
               onChange={onSearchChange}
               label="Поисковый запрос"
               variant='standard'
-              color="secondary"
+              color="error"
           />
           <Button
               className={'home_search--search-filed__btn'}
               variant="contained"
-              color="secondary"
+              color="error"
               onClick={search}
-          >Search
+          >Поиск
           </Button>
         </div>
         <div className={'home_search--offers'}>
-          <h2 className={'home_search--offers__title'}>Квартиры</h2>
+          {/*<h2 className={'home_search--offers__title'}>Квартиры</h2>*/}
           {appartments.map((appartment) => (
               <Appartment
                   id={appartment.id}
                   number={appartment.number}
                   photos={appartment.photos}
                   address={appartment.address}
-                  description={appartment.address}
+                  description={appartment.description}
                   area={appartment.area}
                   price={appartment.price}
               />
